@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="createUserDoc"
+    tools:context=".reg_1">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bgimg_02" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="141dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="141dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="153dp"
+            android:layout_height="139dp"
+
+
+            android:onClick="pickImageForProfile"
+            android:src="@drawable/profileimage_placeholder"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/edit_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|right"
+            android:onClick="pickImageForProfile"
+            android:src="@drawable/edit_image_ic"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="0dp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/round_bg"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="10dp"
+            android:ems="10"
+            android:fontFamily="@font/russo_one"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:textAlignment="center"
+            android:textColor="#8E1167"
+            android:textSize="22sp"
+            tools:layout_editor_absoluteX="15dp"
+            tools:layout_editor_absoluteY="461dp" />
+
+        <EditText
+            android:id="@+id/UCID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="40dp"
+            android:ems="10"
+            android:fontFamily="@font/russo_one"
+            android:hint="UCID"
+            android:inputType="number"
+            android:padding="15dp"
+            android:textAlignment="center"
+            android:textColor="#8E1167"
+            android:textSize="22sp"
+            tools:layout_editor_absoluteX="15dp"
+            tools:layout_editor_absoluteY="461dp" />
+    </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/ldb"
+        android:layout_width="88dp"
+        android:layout_height="84dp"
+
+        android:layout_marginTop="76dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loaiding_spit.json"
+        app:lottie_loop="true">
+
+    </com.airbnb.lottie.LottieAnimationView>
+
+    <Button
+        android:id="@+id/finish_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/round_buttoon"
+        android:onClick="createUserDoc"
+        android:text="Finish"
+     android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

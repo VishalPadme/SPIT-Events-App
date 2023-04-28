@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "10656522625",
+    "project_id": "emaone-f7b78",
+    "storage_bucket": "emaone-f7b78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10656522625:android:c23a9e2c073883202a8880",
+        "android_client_info": {
+          "package_name": "com.padme.emaone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10656522625-q2m8a3ld9tam8h12pb8slmvs8629m0pc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT-AIrGlGnTC2COFab4RmJRqaK8PCGWI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10656522625-q2m8a3ld9tam8h12pb8slmvs8629m0pc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
