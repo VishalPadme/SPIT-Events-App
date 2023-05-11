@@ -40,7 +40,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-              android:background="@drawable/bglighttext"
+                android:background="@drawable/bglighttext"
                 android:gravity="right"
                 android:orientation="horizontal">
 
@@ -72,8 +72,10 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="18dp"
-                        android:tint="#106314"
+                        android:tint="#988214"
                         app:srcCompat="@drawable/baseline_upload_file_24" />
+
+                    
                 </LinearLayout>
 
 

@@ -115,7 +115,7 @@ public class HomePageEvents extends Fragment {
 
        HomeRecyclerView=rootView.findViewById(R.id.Home_Recycle_View_);
        searchbox=rootView.findViewById(R.id.SearchEditText);
-       Query query = FirebaseFirestore.getInstance().collection("Events").orderBy("postDateTime", Query.Direction.DESCENDING);
+       Query query = FirebaseFirestore.getInstance().collection("Events").whereEqualTo("docid","").orderBy("postDateTime", Query.Direction.DESCENDING);
 ////////////////////////////////////////////////////
        //Search Query//
        searchbox.setOnEditorActionListener(new TextView.OnEditorActionListener() {

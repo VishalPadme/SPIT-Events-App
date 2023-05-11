@@ -2,12 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SubEventsPage">
 
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".PendingEvents">
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -24,7 +23,19 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/reportUploadButton"
+                android:layout_width="28dp"
+
+                android:layout_height="28dp"
+                android:layout_weight="1"
+
+                android:onClick="backbutton"
+                android:tint="#DCD2D2"
+                app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -40,7 +51,7 @@
                 android:layout_marginStart="10dp"
 
                 android:gravity="top"
-                android:text="Joined Events"
+                android:text="Pending Events"
                 android:textColor="@color/WHITE"
                 android:textSize="24dp"
                 android:textStyle="bold"
@@ -55,51 +66,15 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/subRecyclerView"
-        android:layout_width="0dp"
+        android:id="@+id/PendingEventsRecyclerView"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/smokyWhite"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-    <LinearLayout
-        android:id="@+id/emptyview"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#C67C6F6F"
-        android:orientation="vertical"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="No Events to Show Here"
-                android:textSize="28sp" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-
-                android:src="@drawable/postaler" />
-        </LinearLayout>
-
-    </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

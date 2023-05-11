@@ -182,7 +182,7 @@ public class SubEventsPage extends Fragment {
             emtyView.setVisibility(View.INVISIBLE);
         }
 
-                            Resources res = getResources();
+                            Resources res = MainActivity.res;
                             Drawable placeholder = ResourcesCompat.getDrawable(res, R.drawable.bg_cover2, null);
                             String filename=getSnapshots().getSnapshot(holder.getBindingAdapterPosition()).getId().toString()+"cover_image";
                             StorageReference srefcover= FirebaseStorage.getInstance().getReference("coverimages/"+filename);

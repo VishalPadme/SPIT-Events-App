@@ -8,7 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/smokyWhite"
     android:orientation="vertical"
-    tools:context=".EventPage">
+    tools:context=".content_main">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

@@ -85,7 +85,7 @@ public class UserFrag extends Fragment {
     FirebaseUser user;
     DocumentReference userdocref;
     CircleImageView ProfileImage;
-    Button SignOut,CreateEvent,AdinEventsButtpn;
+    Button SignOut,CreateEvent,AdinEventsButtpn,PendingEvents;
     TextView UserName,UCID;
     public static final int GALLERY_INTENT_CALLED = 1;
     public static final int GALLERY_KITKAT_INTENT_CALLED = 2;
@@ -105,6 +105,7 @@ public class UserFrag extends Fragment {
         user= FirebaseAuth.getInstance().getCurrentUser();
         ProfileImage=rootview.findViewById(R.id.profileImage);
         AdinEventsButtpn=rootview.findViewById(R.id.button5);
+        PendingEvents=rootview.findViewById(R.id.pending_events);
 
 SignOut.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -125,6 +126,13 @@ AdinEventsButtpn.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         viewAdminEvents();
+    }
+});
+
+PendingEvents.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        pendingEvents();
     }
 });
 
@@ -170,6 +178,11 @@ AdinEventsButtpn.setOnClickListener(new View.OnClickListener() {
 
 
 
+    }
+
+    public void pendingEvents()
+    {
+        startActivity(new Intent(getActivity().getApplicationContext(),PendingEvents.class));
     }
 
     public void createContent()

@@ -268,7 +268,7 @@ Button Date,Time;
             EventMOJO.setSubTitle(Location1.getText().toString());
             EventMOJO.setTextContent(Description.getText().toString());
             EventMOJO.setEventDateTime(Date.getText().toString()+" "+Time.getText().toString());
-            EventMOJO.setDocid("");
+            EventMOJO.setDocid("Pending");
             EventMOJO.setCUID(FAuth.getCurrentUser().getUid().toString());
             if(CoverImageUri!=null)
             {

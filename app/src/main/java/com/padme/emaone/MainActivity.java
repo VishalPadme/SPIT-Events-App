@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     private Handler mH = new Handler();
     FirebaseFirestore FStore;
-
+    static Resources res;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         fAuth = FirebaseAuth.getInstance();
         FStore = FirebaseFirestore.getInstance();
-
+        res = getResources();
         mH.postDelayed(new Runnable() {
             @Override
             public void run() {

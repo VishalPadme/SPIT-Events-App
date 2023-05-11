@@ -18,6 +18,12 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".AprooveEvent"
+            android:exported="false" />
+        <activity
+            android:name=".PendingEvents"
+            android:exported="false" />
+        <activity
             android:name=".EditEvent"
             android:exported="false" />
         <activity
@@ -33,10 +39,6 @@
             android:theme="@style/createEvent" />
         <activity
             android:name=".EventsMainPage"
-            android:exported="false"
-            android:screenOrientation="nosensor" />
-        <activity
-            android:name=".EventPage"
             android:exported="false"
             android:screenOrientation="nosensor" />
         <activity
