@@ -173,7 +173,7 @@ public class reg_1 extends AppCompatActivity {
         user.setName(NameTextView.getText().toString());
         String Temp=NameTextView.getText().toString();
         user.setEmail(FAuth.getCurrentUser().getEmail().toString());
-        user.setUserLevel("ADMIN");
+        user.setUserLevel("LOW");
         if(FlagProfileImage==1) user.setProfilePhotoUri(storageReference.getDownloadUrl().toString());
         final CollectionReference USER=FStore.collection("users");
 /*

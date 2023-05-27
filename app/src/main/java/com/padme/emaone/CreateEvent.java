@@ -12,7 +12,6 @@ import android.app.TimePickerDialog;
 import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,16 +28,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.google.type.DateTime;
-import com.google.type.DateTimeOrBuilder;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -79,7 +74,7 @@ Button Date,Time;
         FStore=FirebaseFirestore.getInstance();
         FAuth=FirebaseAuth.getInstance();
         FStoreage=FirebaseStorage.getInstance();
-        Title=findViewById(R.id.Title);
+        Title=findViewById(R.id.imagelinks);
         Location1=findViewById(R.id.Location);
         Description=findViewById(R.id.Contentt);
         EventMOJO=new Eventcard_Modal_Class();
@@ -94,7 +89,7 @@ Button Date,Time;
 
 
         String[] Depts={"COMPS","IT","ETRX","EXTC","MCA","Other"};
-        String[] Comits= {"Student Council","Sports Committee","Mudra","Oculus ","CSI SPIT","Rotaract Club","IIC & E-Cell","NISP Council","SPARK","ENACTUS","IEEE SPIT","IEEE WIE","IdeaLab","ELA","FACE","ACSES","EESA","ACE"};
+        String[] Comits= {"Student Council","Sports Committee","Mudra","Oculus ","CSI SPIT","Rotaract Club","IIC & E-Cell","NISP Council","SPARK","ENACTUS","IEEE SPIT","IEEE WIE","IETE SPIT","IEEE AESS","IdeaLab","ELA","FACE","ACSES","EESA","ACE"};
         String[] Categories={"Art","Technical","Sports","Other"};
         //adapterItems = new ArrayAdapter<String>(this,R.layout.list_item,items);
         //autoCompleteTxtCommits.setAdapter(adapterItems);
@@ -255,7 +250,7 @@ Button Date,Time;
 
         else if(Location1.getText().toString().length()<4)
         {
-            Title.setError("Please Enter Valid Title");
+          Location1.setError("Please Enter Valid Title");
         }
         else if(Description.getText().toString().length()<4)
         {

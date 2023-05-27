@@ -42,6 +42,7 @@ public class PendingEvents extends AppCompatActivity {
     FirestoreRecyclerAdapter AdminEventsAdapter;
     public void onStart() {
         super.onStart();
+
         AdminEventsAdapter.startListening();
     }
 
@@ -77,6 +78,7 @@ public class PendingEvents extends AppCompatActivity {
                         i.putExtra("DOCID",DocId);
                         Log.d("IDDDDDDDD",DocId);
                         startActivity(i);
+                        finish();
 
                     }
                 });

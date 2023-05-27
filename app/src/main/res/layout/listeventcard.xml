@@ -74,6 +74,22 @@
                         android:layout_marginLeft="18dp"
                         android:tint="#106314"
                         app:srcCompat="@drawable/baseline_upload_file_24" />
+
+                    <ImageView
+                        android:id="@+id/reportView"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="18dp"
+                        android:tint="#53464F"
+                        app:srcCompat="@drawable/baseline_download_for_offline_24" />
+
+                    <ImageView
+                        android:id="@+id/partview"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="18dp"
+                        android:tint="#065E09"
+                        app:srcCompat="@drawable/baseline_supervised_user_circle_24" />
                 </LinearLayout>
 
 

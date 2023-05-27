@@ -1,12 +1,9 @@
 package com.padme.emaone;
 
-import static android.app.Activity.RESULT_OK;
-
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -95,7 +92,7 @@ public class UserFrag extends Fragment {
         // Inflate the layout for this fragment
        View rootview = inflater.inflate(R.layout.fragment_user, container, false);
 
-        UserName=rootview.findViewById(R.id.Title);
+        UserName=rootview.findViewById(R.id.imagelinks);
         UCID=rootview.findViewById(R.id.ucid);
         SignOut=rootview.findViewById(R.id.SignOutButton);
         CreateEvent=rootview.findViewById(R.id.createEventButton);
@@ -106,6 +103,9 @@ public class UserFrag extends Fragment {
         ProfileImage=rootview.findViewById(R.id.profileImage);
         AdinEventsButtpn=rootview.findViewById(R.id.button5);
         PendingEvents=rootview.findViewById(R.id.pending_events);
+
+
+
 
 SignOut.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -162,6 +162,12 @@ PendingEvents.setOnClickListener(new View.OnClickListener() {
 
                 UserName.setText(documentSnapshot.getString("name"));
                 UCID.setText(documentSnapshot.getString("ucid"));
+
+                if(documentSnapshot.getString("userLevel").equals("ADMIN"))
+                {
+                    PendingEvents.setVisibility(View.VISIBLE);
+                    //Toast.makeText(getActivity(), documentSnapshot.getString("userLevel"), Toast.LENGTH_SHORT).show();
+                }
 
 
 

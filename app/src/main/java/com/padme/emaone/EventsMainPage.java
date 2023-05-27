@@ -1,7 +1,5 @@
 package com.padme.emaone;
 
-import static android.icu.lang.UProperty.INT_START;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
@@ -13,8 +11,6 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +24,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -63,7 +58,7 @@ public class EventsMainPage extends AppCompatActivity {
         FAuth=FirebaseAuth.getInstance();
         FStore= FirebaseFirestore.getInstance();
         FStorgae=FirebaseStorage.getInstance();
-        TitleV=findViewById(R.id.Title);
+        TitleV=findViewById(R.id.imagelinks);
         LocationV=findViewById(R.id.location);
         DateV=findViewById(R.id.Date);
         TimeV=findViewById(R.id.Time);

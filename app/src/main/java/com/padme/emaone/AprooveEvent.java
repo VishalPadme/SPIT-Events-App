@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,17 +20,12 @@ import com.bumptech.glide.Glide;
 import com.curios.textformatter.FormatText;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AprooveEvent extends AppCompatActivity {
     String Docid;
@@ -58,7 +51,7 @@ public class AprooveEvent extends AppCompatActivity {
         FAuth=FirebaseAuth.getInstance();
         FStore= FirebaseFirestore.getInstance();
         FStorgae=FirebaseStorage.getInstance();
-        TitleV=findViewById(R.id.Title);
+        TitleV=findViewById(R.id.imagelinks);
         LocationV=findViewById(R.id.location);
         DateV=findViewById(R.id.Date);
         TimeV=findViewById(R.id.Time);
@@ -137,6 +130,7 @@ public class AprooveEvent extends AppCompatActivity {
       Docref.update("docid","").addOnSuccessListener(new OnSuccessListener<Void>() {
           @Override
           public void onSuccess(Void unused) {
+
               finish();
 
           }

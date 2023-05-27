@@ -28,8 +28,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -37,13 +39,20 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.Date;
 
 public class AdminEventsList extends AppCompatActivity {
     RecyclerView AdminREcyclerView;
+
+    String csv;
     FirestoreRecyclerAdapter AdminEventsAdapter;
     public void onStart() {
         super.onStart();
@@ -62,7 +71,7 @@ public class AdminEventsList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_events_list);
         AdminREcyclerView=findViewById(R.id.adminEventsRecyclerView);
-        Query query = FirebaseFirestore.getInstance().collection("Events").orderBy("postDateTime", Query.Direction.DESCENDING).whereEqualTo("cuid", FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
+        Query query = FirebaseFirestore.getInstance().collection("Events").whereEqualTo("cuid", FirebaseAuth.getInstance().getCurrentUser().getUid().toString()).orderBy("postDateTime", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Eventcard_Modal_Class> options=
                 new FirestoreRecyclerOptions.Builder<Eventcard_Modal_Class>().setQuery(query,Eventcard_Modal_Class.class)
                         .build();
@@ -274,6 +283,82 @@ public class AdminEventsList extends AppCompatActivity {
 
                     }
                 });
+                holder.ViewReportButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        DocumentSnapshot snapshot = getSnapshots().getSnapshot(holder.getBindingAdapterPosition());
+                        final String DocId=snapshot.getId();
+                        String filename=DocId.toString()+"reportImage";
+                        StorageReference storageReference= FirebaseStorage.getInstance().getReference("eventReports/"+filename);
+                        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri.toString()));
+                                startActivity(browserIntent);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(AdminEventsList.this, "No Report Submitted", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
+                holder.Partic.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
+                     //   progressDialog.setTitle("Fetching Data");
+                      //  progressDialog.show();
+                        DocumentSnapshot snapshot = getSnapshots().getSnapshot(holder.getBindingAdapterPosition());
+                        final String DocId=snapshot.getId();
+                            // add-write text into file
+                            try {
+                                FileOutputStream fileout=new FileOutputStream(new File("/storage/emulated/0/Download","Participants list_"+DocId+".csv"));
+                                OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
+                                outputWriter.write("\"UCID\",\"Name\",\"Email\"\n");
+
+                                CollectionReference parts=FirebaseFirestore.getInstance().collection("participatedUserMeta").document(DocId).collection("participants");
+                                parts.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        String TAG="LIST";
+                                        csv="";
+                                        if (task.isSuccessful()) {
+                                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                                DocumentReference user=FirebaseFirestore.getInstance().collection("users").document(document.getId());
+                                                user.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                        csv+="\""+documentSnapshot.getString("name")+"\",\""+documentSnapshot.getString("ucid")+"\",\""+documentSnapshot.getString("email")+"\"\n";
+                                                    }
+                                                }).addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        //Log.d(TAG, "Error getting documents: ", task.getException());
+                                                    }
+                                                });
+                                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                            }
+                                        } else {
+                                            Log.d(TAG, "Error getting documents: ", task.getException());
+                                          // if(progressDialog.isShowing())
+                                           // progressDialog.dismiss();
+                                        }
+                                    }
+                                });
+                                outputWriter.write(csv);
+                                outputWriter.close();
+                                //display file saved message
+                                Toast.makeText(getBaseContext(), "File saved successfully!",
+                                        Toast.LENGTH_SHORT).show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                    }
+                });
 
 
 
@@ -322,7 +407,7 @@ public class AdminEventsList extends AppCompatActivity {
         private TextView EventTitle,timego;
         private LinearLayout Card;
 
-        private ImageView CoverImageH,DeleteButton,UpdateButton,UploadDataButton;
+        private ImageView CoverImageH,DeleteButton,UpdateButton,UploadDataButton,ViewReportButton,Partic;
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -332,6 +417,9 @@ public class AdminEventsList extends AppCompatActivity {
             UpdateButton=itemView.findViewById(R.id.editButton);
             UploadDataButton=itemView.findViewById(R.id.reportUploadButton);
             Card=itemView.findViewById(R.id.adminlistcard);
+            ViewReportButton=itemView.findViewById(R.id.reportView);
+            Partic=itemView.findViewById(R.id.partview);
+
 
 
         }

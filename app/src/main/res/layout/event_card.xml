@@ -175,23 +175,26 @@
                     android:orientation="vertical"
 
                     >
+
                     <ImageView
                         android:id="@+id/upvote"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="12dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/baseline_thumb_up_off_alt_24"></ImageView>
+                        android:src="@drawable/baseline_thumb_up_off_alt_24"
+                        android:visibility="invisible"></ImageView>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
+                        android:gravity="center"
                         android:maxLines="1"
                         android:text="0"
                         android:textAlignment="center"
-                        android:gravity="center"
-                        android:textColor="@color/BLACK">
+                        android:textColor="@color/BLACK"
+                        android:visibility="invisible">
 
                     </TextView>
                 </LinearLayout>

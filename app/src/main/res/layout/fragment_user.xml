@@ -49,7 +49,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/Title"
+                    android:id="@+id/imagelinks"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lion Fischer "
@@ -68,7 +68,7 @@
                     android:textSize="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Title" />
+                    app:layout_constraintTop_toBottomOf="@+id/imagelinks" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -154,8 +154,11 @@
                         android:textColor="@color/spitbrown"
                         android:textSize="18sp"
                         android:textStyle="bold"
+                        android:visibility="gone"
                         app:backgroundTint="@null"
                         app:backgroundTintMode="add" />
+
+
 
 
 

@@ -59,5 +59,6 @@ dependencies {
     // FirebaseUI for Cloud Storage
     implementation 'com.firebaseui:firebase-ui-storage:8.0.2'
     implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
 }
